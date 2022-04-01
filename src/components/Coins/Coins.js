@@ -9,26 +9,25 @@ const Coins = () => {
             .then(data => setCoins(data))
     }, [coins])
     return (
-        <div className='min-h-[90vh]' style={{ backgroundColor: 'black' }}>
+        <div className='min-h-[90vh]'>
             <div>
                 <h1 className='text-3xl font-semibold'>Buy <span className='text-rose-500'>Crypto</span>Currency from Us !</h1>
-                <div className='px-[100px]'>
-                    <thead>
-                        <tr className='grid grid-cols-6 border w-[1000px]'>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>24h Change</th>
-                            <th>24h Volume</th>
-                            <th>Market Cap</th>
-                            <th>Buy now</th>
-                        </tr>
-                    </thead>
-                </div>
-                <div className='px-[100px]'>
-                    {
-                        coins.map(coin => <Coin key={coin.id} coin={coin}></Coin>)
-                    }
-                </div>
+                <section className='mt-5 mx-[20px]'>
+                    <div className='grid grid-cols-8 py-2 font-semibold text-sm'>
+                        <p className='w-2/4'>#</p>
+                        <p className=' col-span-2 text-left'>Name</p>
+                        <p className='text-right'>Price</p>
+                        <p className=''>24h Change</p>
+                        <p className=''>24h Volume</p>
+                        <p className=''>Market Cap</p>
+                        <p className=''></p>
+                    </div>
+                    <div className='text-lg'>
+                        {
+                            coins.map(coin => <Coin key={coin.id} coin={coin}></Coin>)
+                        }
+                    </div>
+                </section>
             </div>
         </div>
     );

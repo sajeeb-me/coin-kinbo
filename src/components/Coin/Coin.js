@@ -1,31 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Coin = ({ coin }) => {
-    const { name, symbol, image, current_price, price_change_24h, total_volume, market_cap } = coin
+    const { name, symbol, image, current_price, price_change_percentage_24h, total_volume, market_cap, market_cap_rank } = coin
     return (
         <div>
-            <table class="table-auto">
-                {/* <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>24h Change</th>
-                        <th>24h Volume</th>
-                        <th>Market Cap</th>
-                        <th>Buy now</th>
-                    </tr>
-                </thead> */}
-                <tbody>
-                    <tr className='grid grid-cols-6 border w-[1000px]'>
-                        <td>{name}</td>
-                        <td>{current_price}</td>
-                        <td>{price_change_24h}</td>
-                        <td>{total_volume}</td>
-                        <td>{market_cap}</td>
-                        <td><button>Buy now</button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div className='grid grid-cols-8 py-4 border-b hover:bg-slate-800 items-center'>
+                <div className='flex items-center justify-around'>
+                    <p className='text-left'>{market_cap_rank}</p>
+                    <img className='w-7 h-7' src={image} alt="" />
+                </div>
+                <Link className='col-span-2' to='/home'>
+                    <p className='text-left font-semibold'>{name} <small className='font-thin'>({symbol}/usdt)</small></p>
+                </Link>
+                <p className='text-right'>${(current_price).toLocaleString("en-US")}</p>
+                <p className={`${price_change_percentage_24h >= 0 ? 'text-green-600' : 'text-red-700'} font-semibold`}>{(price_change_percentage_24h).toFixed(2)}%</p>
+                <p>${(total_volume).toLocaleString("en-US")}</p>
+                <p>${(market_cap).toLocaleString("en-US")}</p>
+                <Link to='/home'>
+                    <button className='text-base border border-rose-500 rounded-md py-1 px-2 hover:bg-rose-500'>Buy now</button>
+                </Link>
+            </div>
         </div>
     );
 };
