@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Coins from './components/Coins/Coins';
@@ -31,7 +31,7 @@ function App() {
           <Route path='/' element={<Home></Home>} />
           <Route path='/home' element={<Home></Home>} />
           <Route path='/coins' element={<Coins addToCart={addToCart}></Coins>} />
-          <Route path='/details/:id' element={<DetailsPage></DetailsPage>} />
+          <Route path='/details/:id' element={<DetailsPage addToCart={addToCart}></DetailsPage>} />
           <Route path='/cart' element={<Cart></Cart>} />
           <Route path='*' element={<PageNotFound></PageNotFound>} />
         </Routes>
