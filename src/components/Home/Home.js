@@ -27,7 +27,7 @@ const Home = () => {
             <div>
 
                 <h1 className='text-5xl font-bold'>Welcome to Coin<span className='text-rose-500'>Kinbo</span></h1>
-                <button onClick={() => navigate('/coins')} className='border border-rose-500 py-2 px-4 rounded-md font-semibold hover:bg-rose-500 my-4'>Explore Coins</button>
+                <button onClick={() => navigate('/coins')} className='border border-rose-500 py-2 px-4 rounded-md font-semibold hover:bg-rose-500 my-4 duration-300 ease-in'>Explore Coins</button>
             </div>
         </div >
     );

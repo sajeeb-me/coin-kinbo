@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Coins from './components/Coins/Coins';
@@ -7,8 +7,9 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import Cart from './components/Cart/Cart';
-import { addToLocalStorage } from './utilities/localStorageDb';
+import { addToLocalStorage, getStoredItem } from './utilities/localStorageDb';
 import useCoins from './hooks/useCoins';
+import useCart from './hooks/useCart';
 
 export const PathContext = React.createContext();
 
@@ -17,9 +18,9 @@ function App() {
   const { pathname } = useLocation()
   const path = pathname;
 
-  // const [coins] = useCoins()
+  const [coins] = useCoins()
 
-  const [crypto, setCrypto] = useState([]);
+  const [crypto, setCrypto] = useCart(coins);
 
   let newCart = [];
   const addToCart = (selectedCoin) => {
@@ -36,6 +37,7 @@ function App() {
     setCrypto(newCart);
     addToLocalStorage(selectedCoin.id)
   }
+
 
   return (
     <PathContext.Provider value={path}>

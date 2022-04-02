@@ -20,7 +20,7 @@ const Coin = ({ coin, addToCart }) => {
                 <p>${(market_cap).toLocaleString("en-US")}</p>
                 <div className='flex justify-center items-center gap-2'>
                     <Link to={`/details/${id}`} className='text-base text-rose-500 hover:underline'>Details</Link>
-                    <button onClick={() => addToCart(coin)} className='text-base border border-rose-500 rounded-md py-1 px-2 hover:bg-rose-500'>Buy now</button>
+                    <button onClick={() => addToCart(coin)} className='text-base border border-rose-500 rounded-md py-1 px-2 hover:bg-rose-500 duration-300 ease-in'>Buy now</button>
                 </div>
             </div>
         </div>

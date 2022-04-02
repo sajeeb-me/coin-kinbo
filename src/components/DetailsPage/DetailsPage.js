@@ -30,7 +30,7 @@ const DetailsPage = ({ addToCart }) => {
                             <p><small>24h High: ${(coin.market_data?.high_24h?.usd)?.toLocaleString("en-US")}</small></p>
                             <p><small>24h Low: ${(coin.market_data?.low_24h?.usd)?.toLocaleString("en-US")}</small></p>
                         </div>
-                        <button onClick={() => addToCart(coin)} className='text-base border border-rose-500 rounded-md py-2 px-10 hover:bg-rose-500 my-3'>Buy now</button>
+                        <button onClick={() => addToCart(coin)} className='border border-rose-500 rounded-md py-2 px-10 hover:bg-rose-500 my-3 duration-300 ease-in'>Buy now</button>
                     </div>
                     <div>
                         <h2 className='text-xl font-bold opacity-80'>Info </h2>
