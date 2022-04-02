@@ -3,5 +3,6 @@
         "heroicons",
         "Kinbo",
         "semibold"
-    ]
+    ],
+    "editor.foldingMaximumRegions": 50000
 }

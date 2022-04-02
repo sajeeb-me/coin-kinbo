@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Coin = ({ coin }) => {
+const Coin = ({ coin, addToCart }) => {
     const { id, name, symbol, image, current_price, price_change_percentage_24h, total_volume, market_cap, market_cap_rank } = coin;
-
-    const navigate = useNavigate();
 
     return (
         <div>
@@ -22,7 +20,7 @@ const Coin = ({ coin }) => {
                 <p>${(market_cap).toLocaleString("en-US")}</p>
                 <div className='flex justify-center items-center gap-2'>
                     <Link to={`/details/${id}`} className='text-base text-rose-500 hover:underline'>Details</Link>
-                    <button onClick={() => navigate(`/`)} className='text-base border border-rose-500 rounded-md py-1 px-2 hover:bg-rose-500'>Buy now</button>
+                    <button onClick={() => addToCart(coin)} className='text-base border border-rose-500 rounded-md py-1 px-2 hover:bg-rose-500'>Buy now</button>
                 </div>
             </div>
         </div>
