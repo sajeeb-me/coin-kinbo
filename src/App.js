@@ -4,6 +4,7 @@ import './App.css';
 import Coins from './components/Coins/Coins';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 export const PathContext = React.createContext();
 
@@ -13,12 +14,13 @@ function App() {
   const path = pathname;
   return (
     <PathContext.Provider value={path}>
-      <div className='App text-white min-h-[100vh]' style={pathname.includes('/home') ? { backgroundColor: 'transparent' } : { backgroundColor: '#0f172a' }}>
+      <div className='App text-white min-h-[100vh]' style={pathname.includes('/home') || pathname.length <= 1 ? { backgroundColor: 'transparent' } : { backgroundColor: '#0f172a' }}>
         <Header />
         <Routes>
           <Route path='/' element={<Home></Home>} />
           <Route path='/home' element={<Home></Home>} />
           <Route path='/coins' element={<Coins></Coins>} />
+          <Route path='*' element={<PageNotFound></PageNotFound>} />
         </Routes>
       </div>
     </PathContext.Provider>

@@ -7,7 +7,7 @@ import { PathContext } from '../../App';
 const Header = () => {
     const path = useContext(PathContext)
     return (
-        <nav className='flex items-center justify-between px-[100px] py-3 sticky top-0 z-10' style={path.includes('/home') ? { backgroundColor: 'transparent' } : { backgroundColor: '#0f172a' }}>
+        <nav className='flex items-center justify-between px-[100px] py-3 sticky top-0 z-10' style={path.includes('/home') || path.length <= 1 ? { backgroundColor: 'transparent' } : { backgroundColor: '#0f172a' }}>
             <div className='text-2xl font-semibold'>
                 <Link to='/home'><h2>Coin<span className='text-rose-500'>Kinbo</span></h2></Link>
             </div>
