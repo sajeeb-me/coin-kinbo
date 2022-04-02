@@ -7,6 +7,8 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import Cart from './components/Cart/Cart';
+import { addToLocalStorage } from './utilities/localStorageDb';
+import useCoins from './hooks/useCoins';
 
 export const PathContext = React.createContext();
 
@@ -15,12 +17,24 @@ function App() {
   const { pathname } = useLocation()
   const path = pathname;
 
+  // const [coins] = useCoins()
+
   const [crypto, setCrypto] = useState([]);
 
   let newCart = [];
   const addToCart = (selectedCoin) => {
-    newCart = [...crypto, selectedCoin];
-    setCrypto(newCart)
+    const exist = crypto.find(cryp => cryp.id === selectedCoin.id)
+    if (exist) {
+      const rest = crypto.filter(cryp => cryp.id !== selectedCoin.id)
+      exist.quantity = exist.quantity + 1;
+      newCart = [...rest, exist]
+    }
+    else {
+      selectedCoin.quantity = 1;
+      newCart = [...crypto, selectedCoin]
+    }
+    setCrypto(newCart);
+    addToLocalStorage(selectedCoin.id)
   }
 
   return (
@@ -32,7 +46,7 @@ function App() {
           <Route path='/home' element={<Home></Home>} />
           <Route path='/coins' element={<Coins addToCart={addToCart}></Coins>} />
           <Route path='/details/:id' element={<DetailsPage addToCart={addToCart}></DetailsPage>} />
-          <Route path='/cart' element={<Cart></Cart>} />
+          <Route path='/cart' element={<Cart crypto={crypto}></Cart>} />
           <Route path='*' element={<PageNotFound></PageNotFound>} />
         </Routes>
       </div>

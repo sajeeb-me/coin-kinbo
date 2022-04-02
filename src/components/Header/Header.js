@@ -4,7 +4,7 @@ import CustomLink from '../CustomLink/CustomLink';
 import { Link } from 'react-router-dom';
 import { PathContext } from '../../App';
 
-const Header = ({crypto}) => {
+const Header = ({ crypto }) => {
     const path = useContext(PathContext)
     return (
         <nav className='flex items-center justify-between px-[100px] py-3 sticky top-0 z-10' style={path.includes('/home') || path.length <= 1 ? { backgroundColor: 'transparent' } : { backgroundColor: '#0f172a' }}>
@@ -17,9 +17,9 @@ const Header = ({crypto}) => {
                 <CustomLink to='/search'>Search</CustomLink>
                 <CustomLink to='/contact'>Contact</CustomLink>
             </div>
-            <div className='flex items-center gap-2'>
-                <Link to='/cart'><ShoppingBagIcon className="h-7 w-7" /></Link>
-                <sup className='bg-rose-500 p-2 rounded-full absoulate right-5 bg-opacity-80'>{crypto.length>0 && crypto.length}</sup>
+            <div className='flex items-center gap-3'>
+                <Link className='flex relative' to='/cart'><p><ShoppingBagIcon className="h-7 w-7" /></p>
+                    <p className='bg-rose-500 px-2 rounded-full bg-opacity-80 absolute left-3 bottom-2'><small>{crypto.length > 0 && crypto.length}</small></p></Link>
                 <Link to='/'><UserCircleIcon className="h-7 w-7" /></Link>
             </div>
         </nav>
