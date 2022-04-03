@@ -1,4 +1,6 @@
+import { TrashIcon } from '@heroicons/react/outline';
 import React from 'react';
+import { deleteCart } from '../../utilities/localStorageDb';
 
 const Receipt = ({ crypto }) => {
     let quantity = 0;
@@ -6,7 +8,6 @@ const Receipt = ({ crypto }) => {
     crypto.forEach(cryp => {
         quantity = quantity + cryp.quantity;
         totalPrice = totalPrice + cryp.current_price * cryp.quantity;
-        // console.log(cryp)
     })
     const tax = totalPrice * 0.05;
     const serviceCharge = totalPrice * 0.02;
@@ -15,10 +16,10 @@ const Receipt = ({ crypto }) => {
     const grandTotal = subTotal - discount;
     return (
         <div>
-            <div className='flex justify-between'>
+            <section className='flex justify-between'>
                 <p>Selected Coin : {crypto.length}</p>
                 <p>Quantity : {quantity}</p>
-            </div>
+            </section>
             <section className='my-6'>
                 <div className='flex justify-between'>
                     <div className='text-left'>
@@ -50,6 +51,15 @@ const Receipt = ({ crypto }) => {
                         <p className='font-semibold'>${(grandTotal).toFixed(2)}</p>
                     </div>
                 </div>
+            </section>
+            <section>
+                <button className='w-full border border-green-500 py-3 px-4 rounded-md font-semibold hover:bg-green-500 my-2 duration-300 ease-in'>
+                    <p>Proceed to Pay</p>
+                </button>
+                <button onClick={deleteCart} className='w-full border border-rose-500 py-3 px-4 rounded-md font-semibold flex justify-center items-center gap-2 hover:bg-rose-500 my-1 duration-300 ease-in'>
+                    <p>Delete Cart</p>
+                    <TrashIcon className='w-5 h-5'></TrashIcon>
+                </button>
             </section>
         </div>
     );

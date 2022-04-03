@@ -31,9 +31,23 @@ const removeItem = (id) => {
     localStorage.setItem('selected-coin', JSON.stringify(storageCoin))
 }
 
+const minusItem = (id) => {
+    let storageCoin = getStoredItem();
+    let count = storageCoin[id];
+    if (count) {
+        storageCoin[id] = count - 1;
+    }
+    localStorage.setItem('selected-coin', JSON.stringify(storageCoin))
+}
+
+const deleteCart = () => {
+    localStorage.removeItem('selected-coin')
+}
 
 export {
     getStoredItem,
     addToLocalStorage,
-    removeItem
+    removeItem,
+    deleteCart,
+    minusItem
 }

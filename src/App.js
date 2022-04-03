@@ -19,7 +19,6 @@ function App() {
   const path = pathname;
 
   const [coins] = useCoins()
-
   const [crypto, setCrypto] = useCart(coins);
 
   let newCart = [];
