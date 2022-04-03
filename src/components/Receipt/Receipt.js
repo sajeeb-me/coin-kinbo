@@ -16,7 +16,7 @@ const Receipt = ({ crypto }) => {
     const grandTotal = subTotal - discount;
     return (
         <div>
-            <section className='flex justify-between'>
+            <section className='flex justify-between font-semibold'>
                 <p>Selected Coin : {crypto.length}</p>
                 <p>Quantity : {quantity}</p>
             </section>
@@ -43,7 +43,7 @@ const Receipt = ({ crypto }) => {
                         <p>${(discount).toFixed(2)}</p>
                     </div>
                 </div>
-                <div className='flex justify-between'>
+                <div className='flex justify-between text-lg'>
                     <div className='text-left'>
                         <p className='font-semibold'>Grand Total :</p>
                     </div>

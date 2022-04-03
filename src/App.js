@@ -10,6 +10,7 @@ import Cart from './components/Cart/Cart';
 import { addToLocalStorage } from './utilities/localStorageDb';
 import useCoins from './hooks/useCoins';
 import useCart from './hooks/useCart';
+import Search from './components/Search/Search';
 
 export const PathContext = React.createContext();
 
@@ -48,6 +49,7 @@ function App() {
           <Route path='/coins' element={<Coins addToCart={addToCart}></Coins>} />
           <Route path='/details/:id' element={<DetailsPage addToCart={addToCart}></DetailsPage>} />
           <Route path='/cart' element={<Cart crypto={crypto}></Cart>} />
+          <Route path='/search' element={<Search addToCart={addToCart}></Search>} />
           <Route path='*' element={<PageNotFound></PageNotFound>} />
         </Routes>
       </div>

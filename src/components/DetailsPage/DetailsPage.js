@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ArrowSmUpIcon, ArrowSmDownIcon } from '@heroicons/react/solid'
 
 
@@ -30,7 +30,10 @@ const DetailsPage = ({ addToCart }) => {
                             <p><small>24h High: ${(coin.market_data?.high_24h?.usd)?.toLocaleString("en-US")}</small></p>
                             <p><small>24h Low: ${(coin.market_data?.low_24h?.usd)?.toLocaleString("en-US")}</small></p>
                         </div>
-                        <button onClick={() => addToCart(coin)} className='border border-rose-500 rounded-md py-2 px-10 hover:bg-rose-500 my-3 duration-300 ease-in'>Buy now</button>
+                        <div className='flex items-end gap-3'>
+                            <button onClick={() => addToCart(coin)} className='border border-green-500 rounded-md py-2 px-10 hover:bg-green-500 my-3 duration-300 ease-in'>Add to cart</button>
+                            <Link to='/coins' className='font-semibold pb-3 opacity-60 hover:underline hover:opacity-100 duration-200 ease-in'><small>Back to Coin list</small></Link>
+                        </div>
                     </div>
                     <div>
                         <h2 className='text-xl font-bold opacity-80'>Info </h2>
