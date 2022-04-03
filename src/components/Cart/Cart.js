@@ -1,22 +1,37 @@
 import React from 'react';
 import CartDetails from '../CartDetails/CartDetails';
+import Receipt from '../Receipt/Receipt';
+import './Cart.css'
 
 const Cart = ({ crypto }) => {
-    let quantity = 0;
-    crypto.forEach(cryp => {
-        quantity = quantity + cryp.quantity;
-    })
     return (
-        <div>
-            <h1>This is cart: {crypto.length} = {quantity}</h1>
-            <div className='grid grid-cols-2'>
-                <div className='p-5'>
-                    {
-                        crypto.map(coin => <CartDetails key={coin.id} coin={coin}></CartDetails>)
-                    }
+        <div className='px-10'>
+            <div className='grid grid-cols-3'>
+                <div className='col-span-2 m-5'>
+                    <h1 className='text-5xl font-semibold mb-4 opacity-20'>Order Summary</h1>
+                    <div className='container p-5 border rounded-xl h-[420px] overflow-y-auto'>
+                        <div className='grid grid-cols-6 items-center py-2 bg-slate-800 border rounded-t-lg pl-2'>
+                            <p className='w-2/4'>#</p>
+                            <p className='text-left'>Name</p>
+                            <p className='text-right'>Price</p>
+                            <p className='text-right'>Quantity</p>
+                            <p className='text-right'>Total</p>
+                            <p></p>
+                        </div>
+                        {
+                            crypto.map(coin => <CartDetails key={coin.id} coin={coin}></CartDetails>)
+                        }
+                    </div>
                 </div>
                 <div>
-                    <h1>summary</h1>
+                    <div className='m-5'>
+                        <h1 className='text-5xl font-semibold mb-4 opacity-20'>Receipt</h1>
+                        <div className='p-5 border border-transparent bg-slate-800 rounded-xl h-[420px] hover:border-white'>
+                            {
+                                <Receipt crypto={crypto}></Receipt>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ const Coin = ({ coin, addToCart }) => {
 
     return (
         <div>
-            <div className='grid grid-cols-8 py-4 border-b hover:bg-slate-800 items-center'>
+            <div className='grid grid-cols-8 py-5 border-b hover:bg-slate-800 items-center'>
                 <div className='flex items-center justify-around'>
                     <p className='text-left'>{market_cap_rank}</p>
                     <img className='w-7 h-7' src={image} alt="" />

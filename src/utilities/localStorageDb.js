@@ -25,8 +25,15 @@ const addToLocalStorage = (id) => {
     localStorage.setItem('selected-coin', JSON.stringify(storageCoin))
 }
 
+const removeItem = (id) => {
+    let storageCoin = getStoredItem();
+    delete storageCoin[id];
+    localStorage.setItem('selected-coin', JSON.stringify(storageCoin))
+}
+
 
 export {
     getStoredItem,
-    addToLocalStorage
+    addToLocalStorage,
+    removeItem
 }
