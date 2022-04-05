@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import useCoins from '../../hooks/useCoins';
 import Coin from '../Coin/Coin';
+import { ArrowSmRightIcon } from '@heroicons/react/solid'
 
 const Coins = ({ addToCart }) => {
     const [coins] = useCoins()
@@ -16,7 +18,7 @@ const Coins = ({ addToCart }) => {
                         <p className=''>24h Change</p>
                         <p className=''>24h Volume</p>
                         <p className=''>Market Cap</p>
-                        <p className=''></p>
+                        <p className=''><Link to='/search' className='flex justify-center items-center text-red-300 hover:text-red-500 duration-300 ease-in'>Search Coins <ArrowSmRightIcon className="h-5 w-5 " /></Link></p>
                     </div>
                     <div className='text-lg'>
                         {

@@ -15,7 +15,7 @@ const CartDetails = ({ coin }) => {
                 </div>
                 <p className='text-left'>{name}</p>
                 <p className='text-right'>${(current_price).toFixed(2)}</p>
-                <div className='flex items-center pl-10'>
+                <div className='flex items-center pl-5'>
                     <button onClick={() => minusItem(id)} className='text-4xl hover:text-rose-500'>-</button>
                     <p className='border px-4 py-1 rounded-md bg-slate-800 mx-3 mt-1'>{quantity}</p>
                     <button onClick={() => addToLocalStorage(id)} className='text-3xl hover:text-rose-500'>+</button>

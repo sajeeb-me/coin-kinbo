@@ -11,7 +11,7 @@ const Cart = ({ crypto }) => {
             <div className='grid grid-cols-3'>
                 <div className='col-span-2 m-5'>
                     <h1 className='text-5xl font-semibold opacity-20'>Order Summary</h1>
-                    <Link to='/coins' className='flex items-center justify-end gap-2 pr-3 text-green-500 font-semibold opacity-50 hover:opacity-100 duration-200 ease-in'>
+                    <Link to='/search' className='flex items-center justify-end gap-2 pr-3 text-green-500 font-semibold opacity-50 hover:opacity-100 duration-200 ease-in'>
                         <p>Add more coin</p>
                         <ArrowRightIcon className='h-4 w-4'></ArrowRightIcon>
                     </Link>
@@ -20,7 +20,7 @@ const Cart = ({ crypto }) => {
                             <p className='w-2/4'>#</p>
                             <p className='text-left'>Name</p>
                             <p className='text-right'>Price</p>
-                            <p className='text-right'>Quantity</p>
+                            <p className='pl-4'>Quantity</p>
                             <p className='text-right'>Total</p>
                             <p></p>
                         </div>
