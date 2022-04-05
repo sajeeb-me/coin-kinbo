@@ -25,7 +25,7 @@ const Header = ({ crypto }) => {
             <div className='flex items-center gap-3'>
                 <Link className='flex relative' to='/cart'><p><ShoppingBagIcon className="h-7 w-7" /></p>
                     <p className='bg-rose-500 px-2 rounded-full bg-opacity-80 absolute left-3 bottom-2'><small>{quantity > 0 && quantity}</small></p></Link>
-                <Link to='/'><UserCircleIcon className="h-7 w-7" /></Link>
+                <Link to='/profile'><UserCircleIcon className="h-7 w-7" /></Link>
             </div>
         </nav>
     );
