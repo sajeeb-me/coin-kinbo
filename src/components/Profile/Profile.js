@@ -58,7 +58,7 @@ const Profile = ({ crypto }) => {
                     <div>
                         <div className='flex justify-center items-center h-[90vh] px-[150px]'>
                             <section className='grid grid-cols-2 h-[70vh]'>
-                                <div className='bg-rose-500 rounded-l-xl bg-opacity-70 p-10 flex items-center'>
+                                <div className='bg-rose-700 rounded-l-xl p-10 flex items-center'>
                                     <article>
                                         <h2 className='text-5xl text-right font-semibold'>Get exclusive excess</h2>
                                         <h2 className='text-5xl text-right font-semibold my-3'>to CoinKinbo</h2>
