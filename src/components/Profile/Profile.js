@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GoogleIcon from '../../icons/google.png'
 import GitHubIcon from '../../icons/github.png'
 import FacebookIcon from '../../icons/facebook.png'
 import ChartLine from '../ChartLine/ChartLine';
 import app from '../../firebase.init';
-import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GithubAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GithubAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const auth = getAuth(app);
@@ -15,12 +16,15 @@ const facebookProvider = new FacebookAuthProvider();
 
 const Profile = ({ crypto }) => {
     const [user, setUser] = useState({})
-    const [registered, setRegistered] = useState(false);
+    const [registered, setRegistered] = useState(true);
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [error, setError] = useState('')
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/profile'
 
     const handleName = e => {
         setName(e.target.value)
@@ -42,6 +46,7 @@ const Profile = ({ crypto }) => {
                     const user = result.user;
                     setUser(user)
                     console.log(user)
+                    navigate(from, { replace: true });
                 })
                 .catch(error => {
                     console.error(error)
@@ -56,6 +61,7 @@ const Profile = ({ crypto }) => {
                     console.log(user)
                     setUserName()
                     emailVarification()
+                    navigate(from, { replace: true });
                 })
                 .catch(error => {
                     console.error(error)
@@ -63,6 +69,11 @@ const Profile = ({ crypto }) => {
                 })
         }
     }
+    useEffect(() => {
+        onAuthStateChanged(auth, user => {
+            setUser(user)
+        })
+    }, [])
 
     const setUserName = () => {
         updateProfile(auth.currentUser, {
@@ -92,6 +103,7 @@ const Profile = ({ crypto }) => {
             .then(result => {
                 const user = result.user
                 setUser(user)
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 alert('Your are not Signed in. Pleaser provide valid information.')
@@ -102,6 +114,7 @@ const Profile = ({ crypto }) => {
             .then(result => {
                 const user = result.user
                 setUser(user)
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 alert('Your are not Signed in. Pleaser provide valid information.')
@@ -112,6 +125,7 @@ const Profile = ({ crypto }) => {
             .then(result => {
                 const user = result.user
                 setUser(user)
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error)
@@ -134,7 +148,7 @@ const Profile = ({ crypto }) => {
     return (
         <div>
             {
-                !user.uid ?
+                !user?.uid ?
                     <div>
                         <div className='flex justify-center items-center h-[90vh] px-[160px]'>
                             <section className='grid grid-cols-2 h-[70vh]'>

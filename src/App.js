@@ -12,6 +12,8 @@ import useCoins from './hooks/useCoins';
 import useCart from './hooks/useCart';
 import Search from './components/Search/Search';
 import Profile from './components/Profile/Profile';
+import RequreAuth from './components/RequreAuth/RequreAuth';
+import Contact from './components/Contact/Contact';
 
 export const PathContext = React.createContext();
 
@@ -50,7 +52,16 @@ function App() {
           <Route path='/coins' element={<Coins addToCart={addToCart}></Coins>} />
           <Route path='/details/:id' element={<DetailsPage addToCart={addToCart}></DetailsPage>} />
           <Route path='/search' element={<Search addToCart={addToCart}></Search>} />
-          <Route path='/cart' element={<Cart crypto={crypto}></Cart>} />
+          <Route path='/contact' element={
+            <RequreAuth>
+              <Contact></Contact>
+            </RequreAuth>
+          } />
+          <Route path='/cart' element={
+            <RequreAuth>
+              <Cart crypto={crypto}></Cart>
+            </RequreAuth>
+          } />
           <Route path='/profile' element={<Profile crypto={crypto}></Profile>} />
           <Route path='*' element={<PageNotFound></PageNotFound>} />
         </Routes>
